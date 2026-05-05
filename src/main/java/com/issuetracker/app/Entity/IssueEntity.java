@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -23,11 +22,10 @@ public class IssueEntity {
     private String Location;
     private String description;
 
-
     @OneToMany(mappedBy = "issue")
     private List<AcknowlegementEntity> acknowledgements;
 
-    @ManyToOne
-    private FeedbackEntity  feedbackEntity;
-    
+    @OneToMany(mappedBy = "issueEntity")
+    private List<FeedbackEntity> feedbacks;
+
 }
